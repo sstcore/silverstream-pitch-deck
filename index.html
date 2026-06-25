@@ -280,32 +280,53 @@
         <p class="slide-subtitle">How your traffic reaches the exchange — and why picking the right endpoint matters.</p>
       </div>
       
-      <div class="hft-diagram-container gsap-reveal" style="opacity: 0;">
-        <!-- Retail -->
-        <div class="flex items-center gap-sm" style="margin-bottom: 3rem; position: relative;">
-          <div class="hft-node red">Retail</div>
-          <div style="flex:1; height:2px; background: rgba(255, 71, 87, 0.5); position: relative;">
-             <span style="position: absolute; top: -20px; left: 50%; transform: translateX(-50%); color: #ff4757; font-size: 0.75rem;">CDN detour (slow) ⚡</span>
-          </div>
-          <div class="hft-node" style="border-color: #ff4757; color:#ff4757">CDN</div>
-          <div style="flex:1; height:2px; background: rgba(255, 71, 87, 0.5);"></div>
-          <div class="hft-node" style="border-color: #ff4757; color:#ff4757">ALB</div>
-          <div style="flex:1; height:2px; background: rgba(255, 71, 87, 0.5);"></div>
-          <div class="hft-node" style="border-color: #fff;">Exchange</div>
+      <div class="hft-diagram-container gsap-reveal" style="opacity: 0; min-height: 400px; padding: 0;">
+        <!-- SVG Connecting Lines -->
+        <svg width="100%" height="100%" style="position: absolute; top: 0; left: 0; z-index: 1;">
+          <defs>
+            <linearGradient id="redGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#ff4757" stop-opacity="0.2"/>
+              <stop offset="100%" stop-color="#ff4757" stop-opacity="0.8"/>
+            </linearGradient>
+            <linearGradient id="greenGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#2ed573" stop-opacity="0.2"/>
+              <stop offset="100%" stop-color="#2ed573" stop-opacity="0.8"/>
+            </linearGradient>
+          </defs>
+          
+          <!-- Retail Detour Path (Red) -->
+          <path d="M 100 200 L 250 100 L 450 100 L 650 250 L 850 250" fill="none" stroke="url(#redGrad)" stroke-width="4" stroke-dasharray="8 4" />
+          
+          <!-- Institutional Shortcut Path (Green) -->
+          <path d="M 100 300 L 650 250 L 850 250" fill="none" stroke="url(#greenGrad)" stroke-width="4" stroke-dasharray="12 6" />
+        </svg>
+
+        <!-- Nodes (z-index 10) -->
+        <div style="position: relative; width: 100%; height: 400px; z-index: 10;">
+          <!-- Retail Label -->
+          <div style="position: absolute; top: 50px; left: 300px; color: #ff4757; font-size: 0.875rem;">🛒 Retail - CDN detour (slow) ⚡</div>
+          
+          <!-- Retail Node -->
+          <div class="hft-node red" style="position: absolute; top: 170px; left: 70px;">Retail</div>
+          <!-- CDN Node -->
+          <div class="hft-node" style="position: absolute; top: 70px; left: 220px; border-color: #ff4757; color: #ff4757; font-size: 0.75rem;">CDN</div>
+          <!-- CDN Edge Node -->
+          <div class="hft-node" style="position: absolute; top: 70px; left: 420px; border-color: #ff4757; color: #ff4757; font-size: 0.75rem; text-align: center;">CDN<br>Edge</div>
+          
+          <!-- Inst Label -->
+          <div style="position: absolute; top: 320px; left: 150px; color: #2ed573; font-size: 0.875rem;">🏢 Institutional - direct shortcut ⚡</div>
+          
+          <!-- Inst Node -->
+          <div class="hft-node green" style="position: absolute; top: 270px; left: 70px;">Inst.</div>
+          
+          <!-- ALB (Shared point visually) -->
+          <div class="hft-node blue" style="position: absolute; top: 220px; left: 620px;">ALB</div>
+          
+          <!-- Exchange Node -->
+          <div class="hft-node" style="position: absolute; top: 220px; left: 820px; border-color: #fff; box-shadow: 0 0 20px rgba(255,255,255,0.2);">Exch.</div>
         </div>
         
-        <!-- Institutional -->
-        <div class="flex items-center gap-sm" style="position: relative;">
-          <div class="hft-node green">Inst.</div>
-          <div style="flex:3; height:2px; background: rgba(46, 213, 115, 0.5); position: relative;">
-             <span style="position: absolute; top: -20px; left: 50%; transform: translateX(-50%); color: #2ed573; font-size: 0.75rem;">Institutional direct shortcut ⚡</span>
-          </div>
-          <div class="hft-node" style="border-color: #ff4757; color:#ff4757; opacity:0;">ALB</div>
-          <div style="flex:1; height:2px; background: rgba(46, 213, 115, 0.5);"></div>
-          <div class="hft-node" style="border-color: #fff; opacity:0;">Exchange</div>
-        </div>
-        
-        <div style="margin-top: 3rem; background: rgba(255, 165, 2, 0.1); border: 1px solid rgba(255, 165, 2, 0.3); padding: 1rem; border-radius: 8px; color: #ffa502; font-size: 0.875rem;">
+        <div style="margin: 0 2rem 2rem 2rem; background: rgba(255, 165, 2, 0.1); border: 1px solid rgba(255, 165, 2, 0.3); padding: 1rem; border-radius: 8px; color: #ffa502; font-size: 0.875rem; position: relative; z-index: 10;">
           <b>The Edge:</b> Even after picking the institutional endpoint (bypassing CDN), without co-locating your HFT device near the exchange, you still suffer jitter over AWS networks.
         </div>
       </div>

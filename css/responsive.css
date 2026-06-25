@@ -9,10 +9,10 @@
 
 @media (max-width: 768px) {
   .nav-links {
-    display: none; /* In a full app, implement hamburger menu here */
+    display: none; 
   }
   
-  .grid-cols-2, .grid-cols-3 {
+  .grid-cols-2, .grid-cols-3, .grid-cols-4, .grid-cols-5 {
     grid-template-columns: 1fr;
   }
   
@@ -30,6 +30,31 @@
   
   .glass-card {
     padding: 1.5rem;
+  }
+  
+  /* HFT Diagram Mobile Scroll */
+  .hft-diagram-container {
+    overflow-x: auto;
+    padding-bottom: 1rem; /* Space for scrollbar */
+  }
+  .hft-diagram-container > div {
+    min-width: 600px; /* Force minimum width to prevent diagram crushing */
+  }
+  
+  /* Make Nav dots smaller or hidden on mobile if needed, but they are fixed so just smaller */
+  .deck-nav {
+    right: 0.5rem;
+  }
+  .slide {
+    padding: 2rem 0; /* Add padding top/bottom so content isn't cut off on short screens */
+    height: auto;
+    min-height: 100vh;
+  }
+  .deck-nav {
+    display: none; /* Hide deck nav on mobile to save space */
+  }
+  .watermark, .watermark-right {
+    display: none; /* Hide watermarks on mobile */
   }
 }
 
