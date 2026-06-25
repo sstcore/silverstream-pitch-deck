@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SilverStream Trading | Investor Pitch Deck</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  
+  <style>
+    /* Pitch Deck specific styling */
+    .deck-nav { position: fixed; right: 2rem; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: 0.5rem; z-index: 1000; }
+    .deck-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--border-glass); transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); cursor: pointer; }
+    .deck-dot.active { background: var(--accent-cyan); transform: scale(1.8); box-shadow: 0 0 10px var(--accent-cyan); }
+    .deck-dot:hover { background: #fff; transform: scale(1.5); }
+    
+    .watermark { position: fixed; bottom: 2rem; left: 2rem; z-index: 900; color: var(--text-muted); font-size: 0.75rem; font-family: var(--font-mono); letter-spacing: 0.1em; pointer-events: none; }
+    .watermark-right { position: fixed; bottom: 2rem; right: 2rem; z-index: 900; color: var(--text-muted); font-size: 0.75rem; font-family: var(--font-mono); pointer-events: none; }
+    
+    /* 3D Tilt Card Base */
+    .tilt-card { transform-style: preserve-3d; perspective: 1000px; }
+    .tilt-inner { transition: transform 0.1s ease, box-shadow 0.1s ease; transform-style: preserve-3d; }
+    .tilt-inner > * { transform: translateZ(30px); }
+
+    .slide-subtitle { color: var(--text-secondary); margin-bottom: var(--space-xl); max-width: 800px; font-size: 1.125rem; }
+    
+    /* Table styling for economics */
+    .finance-table { width: 100%; border-collapse: collapse; margin-top: 1rem; font-size: 0.875rem; }
+    .finance-table th { text-align: left; padding: 1rem; border-bottom: 1px solid var(--border-glass); color: var(--text-secondary); font-family: var(--font-mono); font-weight: 500; }
+    .finance-table td { padding: 1rem; border-bottom: 1px solid rgba(255,255,255,0.03); }
+    
+    .flow-arrow { color: var(--accent-cyan); font-size: 1.5rem; display: flex; align-items: center; justify-content: center; }
+  </style>
+</head>
+<body>
+  <div class="noise"></div>
+  <div class="watermark">INTERNAL — NOT FOR DISTRIBUTION</div>
+  <div class="watermark-right">SilverStream Trading FZCO</div>
+  <div class="deck-nav" id="deck-nav"></div>
+
+  <!-- SLIDE 1: HERO -->
+  <section class="slide" id="slide-1">
+    <div class="aurora-bg">
+      <div class="aurora-orb orb-1"></div>
+      <div class="aurora-orb orb-2"></div>
+      <div class="aurora-orb orb-3"></div>
+    </div>
+    <div class="container" style="text-align: center; z-index: 10;">
+      <div class="gsap-reveal" style="opacity: 0;">
+        <div class="nav-logo-icon" style="margin: 0 auto 1.5rem auto; width: 64px; height: 64px; box-shadow: 0 0 40px rgba(0, 210, 255, 0.3);"></div>
+        <span class="badge badge-live" style="margin-bottom: 1rem;">Investor Presentation 2026</span>
+      </div>
+      <h1 class="gsap-reveal" style="opacity: 0; margin-bottom: 1rem;">SilverStream <br><span class="text-accent">Trading.</span></h1>
+      <p class="gsap-reveal slide-subtitle" style="opacity: 0; margin: 0 auto;">
+        Institutional Proprietary Trading & Market Making
+      </p>
+    </div>
+  </section>
+
+  <!-- SLIDE 2: EXEC SUMMARY -->
+  <section class="slide" id="slide-2">
+    <div class="container">
+      <div class="gsap-reveal" style="opacity: 0; margin-bottom: var(--space-xl); text-center">
+        <span class="badge" style="margin-bottom: var(--space-md);">Executive Summary</span>
+        <h2>The <span class="text-gradient">Firm.</span></h2>
+        <p class="slide-subtitle">SilverStream is a multi-strategy Proprietary Trading firm executing across 4 distinct business lines.</p>
+      </div>
+      
+      <div class="grid grid-cols-4 gap-md text-left">
+        <div class="glass-card tilt-card gsap-reveal" style="opacity: 0; padding: 1.5rem; border-top: 2px solid var(--accent-cyan);">
+          <div class="tilt-inner">
+            <h4 style="margin-bottom: 0.5rem;">Proprietary Trading</h4>
+            <p style="font-size: 0.875rem; color: var(--text-secondary);">Trading our own capital and investor LP pools using sophisticated low-latency alphas.</p>
+          </div>
+        </div>
+        <div class="glass-card tilt-card gsap-reveal" style="opacity: 0; transition-delay: 100ms; padding: 1.5rem; border-top: 2px solid var(--accent-blue);">
+          <div class="tilt-inner">
+            <h4 style="margin-bottom: 0.5rem;">Market Making</h4>
+            <p style="font-size: 0.875rem; color: var(--text-secondary);">Providing continuous two-sided liquidity on Tier-1 exchanges (Binance, Hyperliquid).</p>
+          </div>
+        </div>
+        <div class="glass-card tilt-card gsap-reveal" style="opacity: 0; transition-delay: 200ms; padding: 1.5rem; border-top: 2px solid var(--positive);">
+          <div class="tilt-inner">
+            <h4 style="margin-bottom: 0.5rem;">Token Launches</h4>
+            <p style="font-size: 0.875rem; color: var(--text-secondary);">Strategic liquidity provisioning and advisory for early-stage Web3 protocols.</p>
+          </div>
+        </div>
+        <div class="glass-card tilt-card gsap-reveal" style="opacity: 0; transition-delay: 300ms; padding: 1.5rem; border-top: 2px solid var(--accent-purple);">
+          <div class="tilt-inner">
+            <h4 style="margin-bottom: 0.5rem;">Trade Finance</h4>
+            <p style="font-size: 0.875rem; color: var(--text-secondary);">Bridging Crypto HNWI capital with the $10T real-world physical commodities market.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 3: TARGET INVESTMENT -->
+  <section class="slide" id="slide-3">
+    <div class="container text-center">
+      <div class="gsap-reveal" style="opacity: 0; margin-bottom: var(--space-xl);">
+        <span class="badge" style="margin-bottom: var(--space-md);">The Ask</span>
+        <h2>Target <span class="text-accent">Investment.</span></h2>
+        <p class="slide-subtitle" style="margin: 0 auto;">Scaling our balance sheet to capture deeper liquidity rebates and fund physical trade deals.</p>
+      </div>
+      
+      <div class="grid grid-cols-2 gap-lg" style="margin: 0 auto; max-width: 900px;">
+        <div class="glass-card gsap-reveal-left" style="opacity: 0; padding: 3rem;">
+          <div class="mono" style="color: var(--accent-cyan); font-size: 0.875rem; margin-bottom: 0.5rem;">TARGET RAISE</div>
+          <div class="text-gradient" style="font-size: 4rem; font-weight: 700; line-height: 1;">$10M</div>
+          <div style="color: var(--text-muted); font-size: 0.875rem; margin-top: 0.5rem;">Strategic LP Capital</div>
+        </div>
+        <div class="glass-card gsap-reveal-right" style="opacity: 0; padding: 3rem;">
+          <div class="mono" style="color: var(--text-secondary); font-size: 0.875rem; margin-bottom: 0.5rem;">POST-MONEY VALUATION</div>
+          <div class="text-gradient" style="font-size: 4rem; font-weight: 700; line-height: 1;">$50M</div>
+          <div style="color: var(--text-muted); font-size: 0.875rem; margin-top: 0.5rem;">Equity equivalent</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 4: PROP ALGO -->
+  <section class="slide" id="slide-4">
+    <div class="container">
+      <div class="grid grid-cols-2 gap-xl items-center">
+        <div class="gsap-reveal-left" style="opacity: 0;">
+          <span class="badge" style="margin-bottom: var(--space-md);">Proprietary Trading</span>
+          <h2>Sophisticated <span class="text-accent">Alphas.</span></h2>
+          <p class="slide-subtitle" style="margin-bottom: var(--space-md);">We do not rely on simple mean reversion. We execute strictly at the high-frequency level.</p>
+          <ul style="list-style: none; display: flex; flex-direction: column; gap: 1rem; color: var(--text-secondary); font-size: 1rem; margin-bottom: 1.5rem;">
+            <li class="flex items-center gap-sm"><span style="color:var(--accent-cyan)">→</span> <b>Order Flow Imbalance (OFI):</b> Predicting short-term micro-price moves using L2/L3 tick data.</li>
+            <li class="flex items-center gap-sm"><span style="color:var(--accent-cyan)">→</span> <b>Low Latency Execution:</b> Sub-millisecond colocation in Tokyo, London, and AWS.</li>
+            <li class="flex items-center gap-sm"><span style="color:var(--accent-cyan)">→</span> <b>Delta-Neutral Hedging:</b> Immune to directional market crashes.</li>
+          </ul>
+        </div>
+        <div class="glass-card tilt-card gsap-reveal-right" style="opacity: 0; padding: 2rem;">
+          <div class="tilt-inner" style="height: 300px; display: flex; align-items: flex-end; gap: 10px; padding-bottom: 20px; border-bottom: 1px solid var(--border-glass);">
+            <div style="flex:1; background: var(--text-muted); height: 20%; border-radius: 4px 4px 0 0;"></div>
+            <div style="flex:1; background: var(--text-muted); height: 35%; border-radius: 4px 4px 0 0;"></div>
+            <div style="flex:1; background: var(--accent-blue); height: 45%; border-radius: 4px 4px 0 0; box-shadow: 0 0 20px rgba(0,210,255,0.2);"></div>
+            <div style="flex:1; background: var(--accent-cyan); height: 70%; border-radius: 4px 4px 0 0; box-shadow: 0 0 20px rgba(0,255,204,0.2);"></div>
+            <div style="flex:1; background: var(--positive); height: 95%; border-radius: 4px 4px 0 0; box-shadow: 0 0 20px rgba(0,255,136,0.3);"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 5: PROP ECONOMICS -->
+  <section class="slide" id="slide-5">
+    <div class="container text-center">
+      <div class="gsap-reveal" style="opacity: 0; margin-bottom: var(--space-xl);">
+        <h2>Investor <span class="text-gradient">Economics.</span></h2>
+        <p class="slide-subtitle" style="margin: 0 auto;">Total alignment of incentives. Zero hidden management fees.</p>
+      </div>
+      
+      <div class="grid grid-cols-3 gap-md items-center gsap-reveal" style="opacity: 0; margin-bottom: var(--space-xl);">
+        <div class="glass-card" style="padding: 2rem;">
+          <h4 style="margin-bottom:0.5rem;">1. Capital Deposit</h4>
+          <p style="font-size:0.875rem; color:var(--text-secondary);">Investor allocates USDT to segregated trading sub-accounts.</p>
+        </div>
+        <div class="glass-card" style="padding: 2rem; border-color: var(--accent-cyan);">
+          <h4 style="margin-bottom:0.5rem; color:var(--accent-cyan);">2. Gross Profit</h4>
+          <p style="font-size:0.875rem; color:var(--text-secondary);">Algo generates target 30-45% p.a. through HFT execution.</p>
+        </div>
+        <div class="glass-card" style="padding: 2rem; border-color: var(--positive);">
+          <h4 style="margin-bottom:0.5rem; color:var(--positive);">3. Net Split (80/20)</h4>
+          <p style="font-size:0.875rem; color:var(--text-secondary);">SilverStream takes a 20% Performance Fee (High-Water Mark).</p>
+        </div>
+      </div>
+      
+      <div class="gsap-reveal" style="opacity: 0; display:inline-block; padding: 1.5rem 3rem; border-radius: 8px; border: 1px solid rgba(0,210,255,0.3); background: rgba(0,210,255,0.05);">
+        <div class="mono" style="font-size: 0.875rem; color: var(--accent-blue); margin-bottom: 0.25rem;">NET INVESTOR YIELD</div>
+        <div class="text-gradient" style="font-size: 3rem; font-weight: 700;">24-36% <span style="font-size: 1rem; color: var(--text-secondary);">p.a.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 6: MARKET MAKING -->
+  <section class="slide" id="slide-6">
+    <div class="container text-center">
+      <div class="gsap-reveal" style="opacity: 0; margin-bottom: var(--space-xl);">
+        <span class="badge" style="margin-bottom: var(--space-md);">Liquidity Division</span>
+        <h2>Market <span class="text-gradient">Making.</span></h2>
+        <p class="slide-subtitle" style="margin: 0 auto;">Continuous two-sided liquidity and spread capture on major venues.</p>
+      </div>
+      
+      <div class="grid grid-cols-3 gap-lg" style="margin-bottom: var(--space-xl);">
+        <div class="glass-card tilt-card gsap-reveal" style="opacity: 0; padding: 2rem;">
+          <div class="tilt-inner">
+            <h3 style="color: #F3BA2F; margin-bottom: 0.5rem;">Binance</h3>
+            <p style="color: var(--text-secondary); font-size: 0.875rem;">Tier-1 spot and derivatives liquidity provision, dampening volatility on the world's largest exchange.</p>
+          </div>
+        </div>
+        <div class="glass-card tilt-card gsap-reveal" style="opacity: 0; transition-delay: 100ms; padding: 2rem;">
+          <div class="tilt-inner">
+            <h3 style="color: #00FFCC; margin-bottom: 0.5rem;">Hyperliquid</h3>
+            <p style="color: var(--text-secondary); font-size: 0.875rem;">Deep L1 on-chain liquidity on the fastest growing decentralized perpetual exchange.</p>
+          </div>
+        </div>
+        <div class="glass-card tilt-card gsap-reveal" style="opacity: 0; transition-delay: 200ms; padding: 2rem;">
+          <div class="tilt-inner">
+            <h3 style="color: #24AE8F; margin-bottom: 0.5rem;">KuCoin</h3>
+            <p style="color: var(--text-secondary); font-size: 0.875rem;">Strategic alt-coin market making, ensuring stable order books.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- SLIDE 7: TOKEN LAUNCH -->
+  <section class="slide" id="slide-7">
+    <div class="container">
+      <div class="grid grid-cols-2 gap-xl items-center">
+        <div class="gsap-reveal-left" style="opacity: 0;">
+          <h2>Token Launches & <span class="text-accent">Advisory.</span></h2>
+          <p class="slide-subtitle">We act as the primary designated market maker for high-profile Web3 protocols.</p>
+          <ul style="list-style: none; display: flex; flex-direction: column; gap: 1rem; color: var(--text-secondary); font-size: 1rem; margin-bottom: 1.5rem;">
+            <li class="flex items-center gap-sm"><span style="color:var(--accent-cyan)">→</span> Managing TGE (Token Generation Event) volatility.</li>
+            <li class="flex items-center gap-sm"><span style="color:var(--accent-cyan)">→</span> KPI-based retainer agreements + Token call options.</li>
+            <li class="flex items-center gap-sm"><span style="color:var(--accent-cyan)">→</span> Cross-exchange inventory management.</li>
+          </ul>
+        </div>
+        <div class="glass-card tilt-card gsap-reveal-right" style="opacity: 0; padding: 2rem; border-color: var(--accent-purple);">
+          <div class="tilt-inner">
+            <h4 style="color: var(--accent-purple); margin-bottom: 1rem;">Revenue Model</h4>
+            <p style="font-size: 1rem; color: var(--text-primary); margin-bottom: 0.5rem;">Monthly Retainer: $10k - $25k</p>
+            <p style="font-size: 1rem; color: var(--text-primary); margin-bottom: 1rem;">Setup Fee: $15k - $50k</p>
+            <div style="padding: 1rem; background: rgba(138, 43, 226, 0.1); border-radius: 8px;">
+              <b style="color: var(--accent-cyan);">The Upside:</b> We negotiate deep out-of-the-money call options on the protocol's token, yielding asymmetric upside if the project succeeds.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 8: L2 ORDERBOOK ANIMATION -->
+  <section class="slide" id="slide-8">
+    <div class="container">
+      <div class="grid grid-cols-2 gap-xl items-center">
+        <div class="gsap-reveal-left" style="opacity: 0;">
+          <h2>HFT Market Making <span class="text-accent">Depth.</span></h2>
+          <p class="slide-subtitle">Live visualization of our sub-millisecond spread capture and automated quoting engine.</p>
+          <div class="glass-card" style="padding: 1.5rem; margin-top: 2rem; border-left: 4px solid var(--positive);">
+            <h4 style="color: var(--positive); margin-bottom: 0.5rem;">Continuous Quoting</h4>
+            <p style="font-size: 0.875rem; color: var(--text-secondary);">
+              Our bots dynamically adjust thousands of orders per second to capture the spread while mitigating toxic flow.
+            </p>
+          </div>
+        </div>
+        
+        <div class="glass-card gsap-reveal-right" style="opacity: 0; padding: 1.5rem; background: #000; border-color: rgba(255,255,255,0.1);">
+          <div class="flex justify-between" style="margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid rgba(255,255,255,0.1); font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted);">
+            <span>PRICE (USDT)</span>
+            <span>SIZE (BTC)</span>
+            <span>TOTAL</span>
+          </div>
+          <div class="orderbook-container asks-container" id="ob-asks"></div>
+          <div class="spread-row mono" id="ob-spread" style="font-size:1.5rem; color:#fff; text-align:center; padding: 0.5rem 0;">98,543.10</div>
+          <div class="orderbook-container bids-container" id="ob-bids"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 9: SERVICE ENDPOINTS -->
+  <section class="slide" id="slide-9">
+    <div class="container">
+      <div class="gsap-reveal" style="opacity: 0; margin-bottom: var(--space-xl);">
+        <span class="badge" style="margin-bottom: var(--space-md);">HFT Architecture</span>
+        <h2>Crypto Exchange <span class="text-gradient">Endpoints.</span></h2>
+        <p class="slide-subtitle">How your traffic reaches the exchange — and why picking the right endpoint matters.</p>
+      </div>
+      
+      <div class="hft-diagram-container gsap-reveal" style="opacity: 0;">
+        <!-- Retail -->
+        <div class="flex items-center gap-sm" style="margin-bottom: 3rem; position: relative;">
+          <div class="hft-node red">Retail</div>
+          <div style="flex:1; height:2px; background: rgba(255, 71, 87, 0.5); position: relative;">
+             <span style="position: absolute; top: -20px; left: 50%; transform: translateX(-50%); color: #ff4757; font-size: 0.75rem;">CDN detour (slow) ⚡</span>
+          </div>
+          <div class="hft-node" style="border-color: #ff4757; color:#ff4757">CDN</div>
+          <div style="flex:1; height:2px; background: rgba(255, 71, 87, 0.5);"></div>
+          <div class="hft-node" style="border-color: #ff4757; color:#ff4757">ALB</div>
+          <div style="flex:1; height:2px; background: rgba(255, 71, 87, 0.5);"></div>
+          <div class="hft-node" style="border-color: #fff;">Exchange</div>
+        </div>
+        
+        <!-- Institutional -->
+        <div class="flex items-center gap-sm" style="position: relative;">
+          <div class="hft-node green">Inst.</div>
+          <div style="flex:3; height:2px; background: rgba(46, 213, 115, 0.5); position: relative;">
+             <span style="position: absolute; top: -20px; left: 50%; transform: translateX(-50%); color: #2ed573; font-size: 0.75rem;">Institutional direct shortcut ⚡</span>
+          </div>
+          <div class="hft-node" style="border-color: #ff4757; color:#ff4757; opacity:0;">ALB</div>
+          <div style="flex:1; height:2px; background: rgba(46, 213, 115, 0.5);"></div>
+          <div class="hft-node" style="border-color: #fff; opacity:0;">Exchange</div>
+        </div>
+        
+        <div style="margin-top: 3rem; background: rgba(255, 165, 2, 0.1); border: 1px solid rgba(255, 165, 2, 0.3); padding: 1rem; border-radius: 8px; color: #ffa502; font-size: 0.875rem;">
+          <b>The Edge:</b> Even after picking the institutional endpoint (bypassing CDN), without co-locating your HFT device near the exchange, you still suffer jitter over AWS networks.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 10: EC2 HUNTING -->
+  <section class="slide" id="slide-10">
+    <div class="container text-center">
+      <div class="gsap-reveal" style="opacity: 0; margin-bottom: var(--space-xl);">
+        <h2>EC2 <span class="text-accent">Hunting.</span></h2>
+        <p class="slide-subtitle" style="margin: 0 auto;">Deploying our HFT instances in the exact AWS Rack closest to the exchange.</p>
+      </div>
+      
+      <div class="flex gap-lg justify-center gsap-reveal" style="opacity: 0;">
+        <div class="hft-rack fail">
+          <span style="color:#ff4757; font-weight:bold;">Rack A ❌</span>
+          <div class="hft-ec2 fail">EC2</div>
+          <div class="hft-ec2 fail">EC2</div>
+          <div class="hft-ec2 fail">EC2</div>
+          <span style="color:var(--text-secondary); font-size:0.75rem;">361 μs - too slow</span>
+        </div>
+        <div class="hft-rack fail">
+          <span style="color:#ff4757; font-weight:bold;">Rack B ❌</span>
+          <div class="hft-ec2 fail">EC2</div>
+          <div class="hft-ec2 fail">EC2</div>
+          <div class="hft-ec2 fail">EC2</div>
+          <span style="color:var(--text-secondary); font-size:0.75rem;">298 μs - too slow</span>
+        </div>
+        <div class="hft-rack active">
+          <span style="color:#2ed573; font-weight:bold;">Rack C 🏆</span>
+          <div class="hft-ec2 active">EC2</div>
+          <div class="hft-ec2 active">EC2</div>
+          <div class="hft-ec2 active">EC2</div>
+          <span style="color:#2ed573; font-size:0.75rem;">150 μs - Found it!</span>
+        </div>
+        <div class="hft-rack">
+          <span style="color:var(--text-secondary); font-weight:bold;">Rack D</span>
+          <div class="hft-ec2">EC2</div>
+          <div class="hft-ec2">EC2</div>
+          <div class="hft-ec2">EC2</div>
+        </div>
+      </div>
+      
+      <p class="gsap-reveal" style="margin-top: 2rem; color: var(--text-secondary); font-size: 0.875rem;">AWS protects customer privacy—we must discover the exchange's physical rack location empirically by probing thousands of instances.</p>
+    </div>
+  </section>
+  
+  <!-- SLIDE 11: TOPOLOGY -->
+  <section class="slide" id="slide-11">
+    <div class="container">
+      <div class="gsap-reveal" style="opacity: 0; margin-bottom: var(--space-xl);">
+        <h2>Network <span class="text-gradient">Topology.</span></h2>
+        <p class="slide-subtitle">Shortest path with minimum hops to the exchange service endpoint.</p>
+      </div>
+      
+      <div class="hft-diagram-container flex gap-md items-center justify-between gsap-reveal" style="opacity: 0;">
+        <div class="hft-vpc-box flex gap-md items-center">
+          <div class="hft-node green" style="font-size:0.6rem; text-align:center;">HFT<br>EC2</div>
+          <span class="flow-arrow">→</span>
+          <div class="hft-node green" style="font-size:0.6rem; text-align:center;">ToR<br>Switch</div>
+          <span class="flow-arrow">→</span>
+          <div class="hft-node green" style="font-size:0.6rem; text-align:center;">Spine<br>Switch</div>
+          <span class="flow-arrow">→</span>
+          <div class="hft-node green" style="font-size:0.6rem; text-align:center;">Our<br>IGW</div>
+        </div>
+        
+        <span class="flow-arrow" style="color:#fff;">→</span>
+        <div class="hft-node blue" style="font-size:0.6rem; text-align:center;">AWS<br>Backbone</div>
+        <span class="flow-arrow" style="color:#fff;">→</span>
+        
+        <div class="hft-vpc-box exchange flex gap-md items-center">
+          <div class="hft-node orange" style="font-size:0.6rem; text-align:center;">Exc.<br>IGW</div>
+          <span class="flow-arrow" style="color:var(--text-muted)">→</span>
+          <div class="hft-node orange" style="font-size:0.6rem; text-align:center;">Spine<br>Switch</div>
+          <span class="flow-arrow" style="color:var(--text-muted)">→</span>
+          <div class="hft-node orange" style="font-size:0.6rem; text-align:center;">ToR<br>Switch</div>
+          <span class="flow-arrow" style="color:var(--text-muted)">→</span>
+          <div class="hft-node orange" style="font-size:0.6rem; text-align:center;">Exchange<br>EP</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 12: CROSS EXCHANGE -->
+  <section class="slide" id="slide-12">
+    <div class="container text-center">
+      <div class="gsap-reveal" style="opacity: 0; margin-bottom: var(--space-xl);">
+        <h2>Cross-Exchange <span class="text-accent">Arbitrage.</span></h2>
+        <p class="slide-subtitle" style="margin: 0 auto;">Connecting two exchanges with minimum latency — when every millisecond counts.</p>
+      </div>
+      
+      <div class="grid grid-cols-3 gap-md gsap-reveal" style="opacity: 0;">
+        <div class="glass-card tilt-card" style="padding: 2rem; border-left: 4px solid var(--accent-blue);">
+          <div class="tilt-inner text-left">
+            <h3 style="margin-bottom: 0.5rem; color: var(--accent-blue);">Avelacom</h3>
+            <p style="font-size: 0.875rem; color: var(--text-secondary);">Crypto-focused. AWS DX at Equinix globally. London ↔ Hong Kong sub 200ms RTT.</p>
+          </div>
+        </div>
+        <div class="glass-card tilt-card" style="padding: 2rem; border-left: 4px solid #ffa502;">
+          <div class="tilt-inner text-left">
+            <h3 style="margin-bottom: 0.5rem; color: #ffa502;">BSO</h3>
+            <p style="font-size: 0.875rem; color: var(--text-secondary);">Ultra-low latency. Tokyo ↔ London sub 200ms RTT. Serves SGX ↔ HKEX routes.</p>
+          </div>
+        </div>
+        <div class="glass-card tilt-card" style="padding: 2rem; border-left: 4px solid var(--positive);">
+          <div class="tilt-inner text-left">
+            <h3 style="margin-bottom: 0.5rem; color: var(--positive);">McKay Brothers</h3>
+            <p style="font-size: 0.875rem; color: var(--text-secondary);">Hybrid wireless + fiber. Level Playing Field policy.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 13: TRADE FINANCE GAP -->
+  <section class="slide" id="slide-13">
+    <div class="container text-center">
+      <div class="gsap-reveal" style="opacity: 0; margin-bottom: var(--space-xl);">
+        <span class="badge" style="margin-bottom: var(--space-md);">Trade Finance Division</span>
+        <h2>What is <span class="text-gradient">Trade Finance?</span></h2>
+        <p class="slide-subtitle" style="margin: 0 auto;">It bridges the gap between when a seller ships goods and when a buyer pays. It funds ~80-90% of global trade.</p>
+      </div>
+      
+      <div class="grid grid-cols-2 gap-lg" style="margin-bottom: var(--space-xl);">
+        <div class="glass-card tilt-card gsap-reveal-left" style="opacity: 0; padding: 2rem; border-left: 4px solid var(--accent-blue);">
+          <div class="tilt-inner">
+            <h3 style="margin-bottom: 0.5rem;">Letter of Credit (L/C)</h3>
+            <p style="color: var(--text-secondary); font-size: 0.875rem;">Bank guarantees payment to exporter once shipping docs verified. Most common instrument in commodity trade.</p>
+          </div>
+        </div>
+        <div class="glass-card tilt-card gsap-reveal-right" style="opacity: 0; padding: 2rem; border-left: 4px solid var(--accent-cyan);">
+          <div class="tilt-inner">
+            <h3 style="margin-bottom: 0.5rem;">Invoice Financing</h3>
+            <p style="color: var(--text-secondary); font-size: 0.875rem;">Seller gets cash advance against an issued invoice. Platform buys the receivable at a discount. Typical tenor: 30-90 days.</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="gsap-reveal" style="opacity: 0;">
+        <p style="color: var(--accent-cyan); font-weight: 500;">SilverStream will focus on Invoice Financing & L/C-based deal flow — highest volume, clearest documentation trail.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 14: PLATFORM STRUCTURE -->
+  <section class="slide" id="slide-14">
+    <div class="container text-center">
+      <div class="gsap-reveal" style="opacity: 0; margin-bottom: var(--space-xl);">
+        <span class="badge" style="margin-bottom: var(--space-md);">End-to-End Flow</span>
+        <h2>The <span class="text-gradient">Platform Structure.</span></h2>
+      </div>
+      
+      <div class="grid grid-cols-5 gap-sm items-center gsap-reveal" style="opacity: 0; margin-bottom: var(--space-xl);">
+        <div class="glass-card" style="padding: 1.5rem 1rem; border-color: var(--accent-blue);">
+          <div class="mono" style="color:var(--accent-blue); margin-bottom:0.5rem;">1</div>
+          <h4 style="font-size:1rem; margin-bottom:0.5rem;">Crypto HNWI</h4>
+          <p style="font-size:0.75rem; color:var(--text-secondary);">Loans BTC</p>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="glass-card" style="padding: 1.5rem 1rem; border-color: var(--accent-cyan);">
+          <div class="mono" style="color:var(--accent-cyan); margin-bottom:0.5rem;">2</div>
+          <h4 style="font-size:1rem; margin-bottom:0.5rem;">Sygnum Bank</h4>
+          <p style="font-size:0.75rem; color:var(--text-secondary);">Custody & Credit Line</p>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="glass-card" style="padding: 1.5rem 1rem;">
+          <div class="mono" style="color:#fff; margin-bottom:0.5rem;">3</div>
+          <h4 style="font-size:1rem; margin-bottom:0.5rem;">SilverStream</h4>
+          <p style="font-size:0.75rem; color:var(--text-secondary);">Deploys USD</p>
+        </div>
+      </div>
+      
+      <div class="grid grid-cols-2 gap-lg text-left gsap-reveal" style="opacity: 0; transition-delay: 200ms;">
+        <div class="glass-card" style="padding: 1.5rem;">
+          <h4 style="color:var(--accent-cyan); margin-bottom:0.5rem;">Custody Partner</h4>
+          <p style="font-size:0.875rem; color:var(--text-secondary);">Sygnum Bank (Switzerland/Abu Dhabi). Regulated digital asset bank. Takes BTC custody off-balance-sheet, opens USD credit line at 50% LTV.</p>
+        </div>
+        <div class="glass-card" style="padding: 1.5rem;">
+          <h4 style="color:var(--accent-cyan); margin-bottom:0.5rem;">Profit Split</h4>
+          <p style="font-size:0.875rem; color:var(--text-secondary);">Investor gets gross yield minus borrow rate. SilverStream keeps 0.5-1.5% origination fee + potential equity share.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 15: WORKED EXAMPLE -->
+  <section class="slide" id="slide-15">
+    <div class="container">
+      <div class="gsap-reveal" style="opacity: 0; margin-bottom: var(--space-xl);">
+        <h2>Physical Trade Deal <span class="text-accent">— Example</span></h2>
+        <p class="slide-subtitle">Palm Oil Export: Indonesia → UAE (60-day deal, $500k notional)</p>
+      </div>
+      
+      <div class="grid grid-cols-2 gap-md">
+        <div class="glass-card tilt-card gsap-reveal-left" style="opacity: 0; padding: 1.5rem;">
+          <div class="tilt-inner">
+            <span style="color:var(--accent-cyan); font-weight:700; margin-right:1rem;">Day 0</span>
+            <span style="font-weight:600;">Deal Originated</span>
+            <p style="font-size:0.875rem; color:var(--text-secondary); margin-top:0.5rem;">Indonesian palm oil exporter needs $500k. SilverStream screens docs.</p>
+          </div>
+        </div>
+        <div class="glass-card tilt-card gsap-reveal-right" style="opacity: 0; padding: 1.5rem;">
+          <div class="tilt-inner">
+            <span style="color:var(--accent-cyan); font-weight:700; margin-right:1rem;">Day 1</span>
+            <span style="font-weight:600;">Credit Deployed</span>
+            <p style="font-size:0.875rem; color:var(--text-secondary); margin-top:0.5rem;">Investor's BTC ($1M) locked at Sygnum. $500k credit line drawn & sent.</p>
+          </div>
+        </div>
+        <div class="glass-card tilt-card gsap-reveal-left" style="opacity: 0; padding: 1.5rem;">
+          <div class="tilt-inner">
+            <span style="color:var(--accent-cyan); font-weight:700; margin-right:1rem;">Day 45</span>
+            <span style="font-weight:600;">Goods Arrive</span>
+            <p style="font-size:0.875rem; color:var(--text-secondary); margin-top:0.5rem;">Palm oil arrives Port of Jebel Ali, UAE. Buyer inspection & customs.</p>
+          </div>
+        </div>
+        <div class="glass-card tilt-card gsap-reveal-right" style="opacity: 0; padding: 1.5rem;">
+          <div class="tilt-inner">
+            <span style="color:var(--positive); font-weight:700; margin-right:1rem;">Day 60</span>
+            <span style="font-weight:600;">Deal Closed</span>
+            <p style="font-size:0.875rem; color:var(--text-secondary); margin-top:0.5rem;">$500k returned. Yield disbursed. BTC unlocked.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 16: UNIT ECONOMICS -->
+  <section class="slide" id="slide-16">
+    <div class="container">
+      <div class="gsap-reveal" style="opacity: 0; margin-bottom: var(--space-md);">
+        <h2>Where Every <span class="text-gradient">Dollar Comes From.</span></h2>
+        <p class="slide-subtitle">The exporter pays everyone. The investor spends nothing.</p>
+      </div>
+      
+      <div class="glass-card gsap-reveal" style="opacity: 0; padding: 1.5rem; margin-bottom: 1rem; border-color: rgba(255, 51, 102, 0.3);">
+        <h4 style="color: var(--negative); margin-bottom: 0.5rem;">THE EXPORTER — pays all costs out of trade margin</h4>
+        <table class="finance-table">
+          <tr><th>What they pay</th><th>Amount</th><th>Who receives it</th></tr>
+          <tr><td>Origination fee (2% of $500k)</td><td>$10,000</td><td>SilverStream</td></tr>
+          <tr><td>Interest on $500k loan (60 days @ 12%)</td><td>$9,900</td><td>Sygnum + Investor</td></tr>
+        </table>
+      </div>
+      
+      <div class="glass-card gsap-reveal" style="opacity: 0; transition-delay: 100ms; padding: 1.5rem; border-color: rgba(0, 255, 204, 0.3);">
+        <h4 style="color: var(--accent-cyan); margin-bottom: 0.5rem;">THE HNWI INVESTOR — pledges held BTC</h4>
+        <table class="finance-table">
+          <tr><th>What they do</th><th>Cash out of pocket</th><th>Net position</th></tr>
+          <tr><td>Pledge $1M BTC at Sygnum</td><td>$0 (already owned)</td><td>BTC still held</td></tr>
+          <tr><td style="color:var(--positive);">Deal closes, interest paid</td><td style="color:var(--positive);">~$1,600-$4,500 yield</td><td style="color:var(--positive);">Pure upside on held BTC</td></tr>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 17: TETHER PRECEDENT -->
+  <section class="slide" id="slide-17">
+    <div class="container text-center">
+      <div class="gsap-reveal" style="opacity: 0; margin-bottom: var(--space-xl);">
+        <span class="badge" style="margin-bottom: var(--space-md);">Live Precedent</span>
+        <h2>The <span class="text-gradient">Tether Transaction.</span></h2>
+        <p class="slide-subtitle" style="margin: 0 auto;">In Oct 2024, Tether Investments financed a $45M crude oil transaction.</p>
+      </div>
+      
+      <div class="grid grid-cols-3 gap-md" style="margin-bottom: var(--space-xl);">
+        <div class="glass-card tilt-card gsap-reveal" style="opacity: 0;">
+          <div class="tilt-inner">
+            <div class="mono text-gradient" style="font-size: 2.5rem; font-weight: 700;">$45M</div>
+            <div style="font-size: 0.875rem; color: var(--text-secondary);">Deal Size</div>
+          </div>
+        </div>
+        <div class="glass-card tilt-card gsap-reveal" style="opacity: 0; transition-delay: 100ms;">
+          <div class="tilt-inner">
+            <div class="mono text-gradient" style="font-size: 2.5rem; font-weight: 700;">670k</div>
+            <div style="font-size: 0.875rem; color: var(--text-secondary);">Barrels Crude Oil</div>
+          </div>
+        </div>
+        <div class="glass-card tilt-card gsap-reveal" style="opacity: 0; transition-delay: 200ms;">
+          <div class="tilt-inner">
+            <div class="mono text-gradient" style="font-size: 2.5rem; font-weight: 700;">USDT</div>
+            <div style="font-size: 0.875rem; color: var(--text-secondary);">Settlement Currency</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="gsap-reveal" style="opacity: 0; transition-delay: 300ms; padding: 1.5rem; background: rgba(0,255,204,0.05); border: 1px solid var(--border-glass); border-radius: 8px;">
+        <b>Validates the concept:</b> A crypto-native company successfully financed physical commodity shipments in the Middle East. It proves the SilverStream model is real and operational today.
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 18: COMPS -->
+  <section class="slide" id="slide-18">
+    <div class="container">
+      <div class="gsap-reveal" style="opacity: 0; margin-bottom: var(--space-xl);">
+        <h2>Market <span class="text-accent">Comps.</span></h2>
+        <p class="slide-subtitle">Our deal pipeline leverages existing infrastructure in SE Asia.</p>
+      </div>
+      
+      <div class="grid grid-cols-2 gap-lg">
+        <div class="glass-card gsap-reveal-left" style="opacity: 0; padding: 2rem;">
+          <h3 style="color: var(--accent-cyan); margin-bottom: 0.5rem;">Funding Societies</h3>
+          <p style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); margin-bottom: 1rem;">SE Asia's largest SME debt platform</p>
+          <ul style="list-style: none; font-size: 0.875rem; color: var(--text-secondary); display: flex; flex-direction: column; gap: 0.75rem;">
+            <li><b>Total disbursed:</b> S$2B+</li>
+            <li><b>Returns:</b> 8-18% (invoice finance)</li>
+            <li><b>Our Edge:</b> They don't accept BTC collateral. We partner with them for deal origination.</li>
+          </ul>
+        </div>
+        
+        <div class="glass-card gsap-reveal-right" style="opacity: 0; padding: 2rem;">
+          <h3 style="color: var(--accent-cyan); margin-bottom: 0.5rem;">Validus Capital</h3>
+          <p style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); margin-bottom: 1rem;">Acquired by GXS Bank (Apr 2025)</p>
+          <ul style="list-style: none; font-size: 0.875rem; color: var(--text-secondary); display: flex; flex-direction: column; gap: 0.75rem;">
+            <li><b>Total disbursed:</b> USD $2B+</li>
+            <li><b>Products:</b> Invoice finance, working capital</li>
+            <li><b>Opportunity:</b> Post-acquisition opens institutional co-funding doors.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- SLIDE 19: RISKS -->
+  <section class="slide" id="slide-19">
+    <div class="container">
+      <div class="gsap-reveal" style="opacity: 0; margin-bottom: var(--space-xl);">
+        <h2>Risks & <span class="text-accent">Mitigations.</span></h2>
+      </div>
+      
+      <div class="grid grid-cols-1 gap-md">
+        <div class="glass-card gsap-reveal-left" style="opacity: 0; padding: 1.5rem; border-left: 4px solid var(--negative);">
+          <h4 style="margin-bottom: 0.25rem;">Document Fraud</h4>
+          <p style="font-size: 0.875rem; color: var(--text-secondary);"><b style="color:var(--text-primary);">Mitigation:</b> Manual verification Phase 1. 3rd-party inspection firms (SGS, Bureau Veritas).</p>
+        </div>
+        <div class="glass-card gsap-reveal-right" style="opacity: 0; padding: 1.5rem; border-left: 4px solid var(--negative);">
+          <h4 style="margin-bottom: 0.25rem;">Counterparty Default</h4>
+          <p style="font-size: 0.875rem; color: var(--text-secondary);"><b style="color:var(--text-primary);">Mitigation:</b> Overcollateralised deal structure. Trade credit insurance. Max 20% exposure.</p>
+        </div>
+        <div class="glass-card gsap-reveal-left" style="opacity: 0; padding: 1.5rem; border-left: 4px solid var(--negative);">
+          <h4 style="margin-bottom: 0.25rem;">BTC Collateral Drop</h4>
+          <p style="font-size: 0.875rem; color: var(--text-secondary);"><b style="color:var(--text-primary);">Mitigation:</b> Conservative 50% LTV. Margin call at 65% LTV. 24hr monitoring.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 20: CONTACT / SYGNUM ADGM -->
+  <section class="slide" id="slide-20">
+    <div class="container text-center">
+      <div class="gsap-reveal" style="opacity: 0; margin-bottom: var(--space-xl);">
+        <span class="badge" style="margin-bottom: var(--space-md);">Next Steps</span>
+        <h2>Strategic <span class="text-gradient">Roadmap.</span></h2>
+        <p class="slide-subtitle" style="margin: 0 auto;">Establishing the regulatory and capital foundation.</p>
+      </div>
+      
+      <div class="glass-card gsap-reveal text-left" style="opacity: 0; display: inline-block; padding: 2rem 3rem; margin-bottom: 2rem; border-color: var(--accent-cyan);">
+        <h4 style="color: var(--accent-cyan); margin-bottom: 0.5rem;">Sygnum ADGM Outreach</h4>
+        <p style="color: var(--text-secondary); font-size: 0.875rem; max-width: 600px;">
+          We are currently engaging with Sygnum Bank's Abu Dhabi Global Market (ADGM) branch. This ensures our institutional crypto-collateralized credit facilities fall under Tier-1 regulatory frameworks in the UAE, providing absolute legal certainty for our LP capital base.
+        </p>
+      </div>
+      
+      <br>
+      
+      <div class="glass-card gsap-reveal" style="opacity: 0; display: inline-block; padding: 2rem 4rem; text-align: center;">
+        <h3 style="margin-bottom: 0.5rem;">Franklin Leonardo</h3>
+        <p style="color: var(--accent-cyan); font-family: var(--font-mono); margin-bottom: 1rem;">+971 585833632</p>
+        <p style="color: var(--text-secondary); font-size: 0.875rem;">DMCC Business Centre, Level 12<br>Uptown Tower, Dubai, UAE</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/orderbook.js"></script>
+</body>
+</html>
