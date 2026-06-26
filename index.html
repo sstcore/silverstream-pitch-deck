@@ -275,31 +275,32 @@
         <p class="slide-subtitle">How your traffic reaches the exchange — and why picking the right endpoint matters.</p>
       </div>
       
-      <div class="hft-diagram-container gsap-reveal" style="opacity: 0; min-height: 400px; padding: 0;">
-        <!-- SVG Connecting Lines -->
-        <svg width="100%" height="100%" style="position: absolute; top: 0; left: 0; z-index: 1;">
-          <defs>
-            <linearGradient id="redGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stop-color="#ff4757" stop-opacity="0.2"/>
-              <stop offset="100%" stop-color="#ff4757" stop-opacity="0.8"/>
-            </linearGradient>
-            <linearGradient id="greenGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stop-color="#2ed573" stop-opacity="0.2"/>
-              <stop offset="100%" stop-color="#2ed573" stop-opacity="0.8"/>
-            </linearGradient>
-          </defs>
-          
-          <!-- Retail Detour Path (Red) -->
-          <path d="M 100 200 L 250 100 L 450 100 L 650 250 L 850 250" fill="none" stroke="url(#redGrad)" stroke-width="4" stroke-dasharray="8 4" />
-          
-          <!-- Institutional Shortcut Path (Green) -->
-          <path d="M 100 300 L 650 250 L 850 250" fill="none" stroke="url(#greenGrad)" stroke-width="4" stroke-dasharray="12 6" />
-        </svg>
-
-        <!-- Nodes (z-index 10) -->
-        <div style="position: relative; width: 100%; height: 400px; z-index: 10;">
-          <!-- Retail Label -->
-          <div style="position: absolute; top: 50px; left: 300px; color: #ff4757; font-size: 0.875rem;">🛒 Retail - CDN detour (slow) ⚡</div>
+      <div class="hft-diagram-container gsap-reveal" style="opacity: 0; min-height: 400px; padding: 0; overflow-x: auto;">
+        <div style="min-width: 900px; position: relative; height: 400px;">
+          <!-- SVG Connecting Lines -->
+          <svg width="100%" height="100%" style="position: absolute; top: 0; left: 0; z-index: 1;">
+            <defs>
+              <linearGradient id="redGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#ff4757" stop-opacity="0.2"/>
+                <stop offset="100%" stop-color="#ff4757" stop-opacity="0.8"/>
+              </linearGradient>
+              <linearGradient id="greenGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#2ed573" stop-opacity="0.2"/>
+                <stop offset="100%" stop-color="#2ed573" stop-opacity="0.8"/>
+              </linearGradient>
+            </defs>
+            
+            <!-- Retail Detour Path (Red) -->
+            <path d="M 100 200 L 250 100 L 450 100 L 650 250 L 850 250" fill="none" stroke="url(#redGrad)" stroke-width="4" stroke-dasharray="8 4" />
+            
+            <!-- Institutional Shortcut Path (Green) -->
+            <path d="M 100 300 L 650 250 L 850 250" fill="none" stroke="url(#greenGrad)" stroke-width="4" stroke-dasharray="12 6" />
+          </svg>
+  
+          <!-- Nodes (z-index 10) -->
+          <div style="position: relative; width: 100%; height: 100%; z-index: 10;">
+            <!-- Retail Label -->
+            <div style="position: absolute; top: 50px; left: 300px; color: #ff4757; font-size: 0.875rem;">🛒 Retail - CDN detour (slow) ⚡</div>
           
           <!-- Retail Node -->
           <div class="hft-node red" style="position: absolute; top: 170px; left: 70px;">Retail</div>
@@ -319,6 +320,7 @@
           
           <!-- Exchange Node -->
           <div class="hft-node" style="position: absolute; top: 220px; left: 820px; border-color: #fff; box-shadow: 0 0 20px rgba(255,255,255,0.2);">Exch.</div>
+        </div>
         </div>
         
         <div style="margin: 0 2rem 2rem 2rem; background: rgba(255, 165, 2, 0.1); border: 1px solid rgba(255, 165, 2, 0.3); padding: 1rem; border-radius: 8px; color: #ffa502; font-size: 0.875rem; position: relative; z-index: 10;">
@@ -444,31 +446,22 @@
       <div class="grid grid-cols-2 gap-xl items-center gsap-reveal" style="opacity: 0;">
         
         <!-- Left: The Visual Route -->
-        <div class="hft-diagram-container" style="position: relative; min-height: 300px; background: rgba(0,0,0,0.4); padding: 2rem;">
+        <div class="hft-diagram-container" style="position: relative; background: rgba(0,0,0,0.4); padding: 2rem; display: flex; align-items: center; justify-content: space-between; min-height: 300px; overflow: hidden;">
           
-          <div style="position: absolute; top: 45%; left: 5%; text-align: center; z-index: 10;">
-            <div class="hft-node blue" style="box-shadow: 0 0 15px rgba(0, 210, 255, 0.4);">Deribit (London)</div>
+          <div style="text-align: center; z-index: 10; width: 140px;">
+            <div class="hft-node blue" style="box-shadow: 0 0 15px rgba(0, 210, 255, 0.4); padding: 0.5rem;">Deribit (London)</div>
             <div class="mono" style="font-size: 0.75rem; color: var(--text-secondary); margin-top: 0.5rem;">BTC = $98,050</div>
           </div>
           
-          <div style="position: absolute; top: 45%; right: 5%; text-align: center; z-index: 10;">
-            <div class="hft-node" style="border-color: #F3BA2F; color: #F3BA2F; box-shadow: 0 0 15px rgba(243, 186, 47, 0.4);">Binance (Tokyo)</div>
+          <!-- Dynamic Dotted Line connecting the two nodes -->
+          <div style="flex: 1; height: 2px; border-bottom: 4px dashed var(--accent-cyan); margin: 0 15px; position: relative; z-index: 1; opacity: 0.6; margin-top: -30px;"></div>
+          
+          <div style="text-align: center; z-index: 10; width: 140px;">
+            <div class="hft-node" style="border-color: #F3BA2F; color: #F3BA2F; box-shadow: 0 0 15px rgba(243, 186, 47, 0.4); padding: 0.5rem;">Binance (Tokyo)</div>
             <div class="mono" style="font-size: 0.75rem; color: var(--text-secondary); margin-top: 0.5rem;">BTC = $98,000</div>
           </div>
           
-          <!-- SVG Line -->
-          <svg width="100%" height="100%" style="position: absolute; top: 0; left: 0; z-index: 1;">
-            <defs>
-              <linearGradient id="fiberGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stop-color="#00d2ff" stop-opacity="0.8"/>
-                <stop offset="100%" stop-color="#F3BA2F" stop-opacity="0.8"/>
-              </linearGradient>
-            </defs>
-            <!-- Draw a curve between the two nodes -->
-            <path d="M 150 150 Q 250 50 350 150" fill="none" stroke="url(#fiberGrad)" stroke-width="4" stroke-dasharray="8 4" />
-          </svg>
-          
-          <div style="position: absolute; top: 10%; left: 50%; transform: translateX(-50%); text-align: center; width: 100%; z-index: 10;">
+          <div style="position: absolute; top: 15%; left: 50%; transform: translateX(-50%); text-align: center; width: 100%; z-index: 10;">
             <div class="badge" style="background: rgba(0,210,255,0.1); color: var(--accent-cyan); font-size: 0.75rem;">Avelacom Fiber Route</div>
             <div class="mono" style="color: var(--text-primary); font-size: 0.875rem; margin-top: 0.5rem;">Latency: 133.5 ms RTT</div>
             <div class="mono" style="color: var(--negative); font-size: 0.6rem; margin-top: 0.25rem;">(vs 250ms+ Public Internet)</div>
@@ -648,13 +641,13 @@
       <div class="hft-diagram-container gsap-reveal" style="opacity: 0; margin: 0 auto; max-width: 800px; padding: 2rem; position: relative;">
         
         <!-- SVG for diagonal arrow from UAE Buyer to Sygnum -->
-        <svg width="100%" height="100%" style="position: absolute; top: 0; left: 0; z-index: 1; pointer-events: none;">
+        <svg width="100%" height="100%" style="position: absolute; top: 0; left: 0; z-index: 1; pointer-events: none;" class="desktop-only">
           <defs>
             <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
               <polygon points="0 0, 10 3.5, 0 7" fill="var(--positive)" />
             </marker>
           </defs>
-          <path d="M 250 170 L 650 260" fill="none" stroke="var(--positive)" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#arrowhead)" />
+          <line x1="20%" y1="55%" x2="80%" y2="85%" stroke="var(--positive)" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#arrowhead)"></line>
         </svg>
 
         <!-- Investor to Sygnum -->
